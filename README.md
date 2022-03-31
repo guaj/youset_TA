@@ -1,4 +1,4 @@
-# Technical assessment for YouSet.
+# Technical assessment for YouSet. [![Build Status](https://app.travis-ci.com/guaj/youset_TA.svg?branch=main)](https://app.travis-ci.com/guaj/youset_TA)
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
