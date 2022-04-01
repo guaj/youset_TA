@@ -8,6 +8,7 @@ import Button from "@mui/material/Button";
 import Card from "@mui/material/Card";
 import * as React from "react";
 import {makeStyles} from "@material-ui/core/styles";
+import { useNavigate } from "react-router-dom";
 
 
 const useStyles = makeStyles(() => ({
@@ -18,6 +19,11 @@ const useStyles = makeStyles(() => ({
 
 export function PackageCards(props) {
     const classes = useStyles();
+    const navigate = useNavigate();
+
+    function SelectPackage() {
+        navigate('/buy/'+props.item.packageNumber);
+    }
 
     return (
         <Card>
@@ -68,7 +74,7 @@ export function PackageCards(props) {
                 </ul>
             </CardContent>
             <CardActions>
-                <Button fullWidth variant={props.item.buttonVariant}>
+                <Button fullWidth variant={props.item.buttonVariant} onClick={SelectPackage}>
                     {props.item.buttonText}
                 </Button>
             </CardActions>
