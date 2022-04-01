@@ -7,7 +7,7 @@ import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 import {PackageCards} from "./PackageCards";
 
-function Copyright(props) {
+export function Copyright(props) {
     return (
         <Typography variant="body2" color="text.secondary" align="center" {...props}>
             {'Copyright © '}
@@ -20,7 +20,7 @@ function Copyright(props) {
     );
 }
 
-const packages = [
+export const packages = [
     {
         packageNumber: 1,
         title: 'Proteco Insurance',
