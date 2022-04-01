@@ -59,13 +59,5 @@ export default function OrderProcessedAlert(props) {
             </Collapse>
         </Box>
     )
-    return (
-        <>{
-            props.processResult?
-                positiveAlert :
-                negativeAlert
-        }
-        </>
-
-    );
+    return <>{props.processResult? positiveAlert : negativeAlert }</>;
 }
