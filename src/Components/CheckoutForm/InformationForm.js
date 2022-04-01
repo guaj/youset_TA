@@ -82,9 +82,11 @@ export default function InformationForm(props) {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if(regex.test(e)){
             setValidInput({...validInput, email: true})
+        }else {
+            setValidInput({...validInput, email: false})
+            setErrorMessage("Please enter a valid email address!");
         }
-        setValidInput({...validInput, email: false})
-        setErrorMessage("Please enter a valid email address!");
+
     }
 
     // Handler for the email input change
@@ -99,8 +101,11 @@ export default function InformationForm(props) {
         if(age > 0){
             setValidInput({...validInput, age: true})
         }
-        setValidInput({...validInput, age: false})
-        setErrorMessage("Age must be greater than 0!");
+        else{
+            setValidInput({...validInput, age: false})
+            setErrorMessage("Age must be greater than 0!");
+        }
+
     }
 
     // Handler for the age input change
