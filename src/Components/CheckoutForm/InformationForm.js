@@ -83,6 +83,7 @@ export default function InformationForm(props) {
         if(regex.test(e)){
             setValidInput({...validInput, email: true})
         }
+        setValidInput({...validInput, email: false})
         setErrorMessage("Please enter a valid email address!");
     }
 
@@ -98,6 +99,7 @@ export default function InformationForm(props) {
         if(age > 0){
             setValidInput({...validInput, age: true})
         }
+        setValidInput({...validInput, age: false})
         setErrorMessage("Age must be greater than 0!");
     }
 
