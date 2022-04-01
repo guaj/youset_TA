@@ -1,9 +1,7 @@
 import axios from 'axios';
 
-function validateData(firstName, lastName, email, gender, packageNumber) {
-    if(typeof firstName === 'undefined')
-        return false
-    else if(typeof lastName === 'undefined')
+function validateData(age, email, gender, packageNumber) {
+    if(typeof age === 'undefined')
         return false
     else if(typeof email === 'undefined')
         return false
@@ -15,24 +13,23 @@ function validateData(firstName, lastName, email, gender, packageNumber) {
 }
 
 export async function SendUserData(
-    firstName,
-    lastName,
+    age,
     email,
     gender,
     packageNumber) {
 
-    const validUserData = validateData(firstName, lastName, email, gender, packageNumber);
+    const validUserData = validateData(age, email, gender, packageNumber);
     if(validUserData) {
-        try {
             axios.post("http://wwww.example.com", {
-                firstName, lastName, email, gender, packageNumber
+                age, email, gender, packageNumber
             }).then(result => {
-                // TODO
+                console.log(result)
+
+            }).catch(error => {
+                console.log(error)
+                return false;
             })
-        }catch (e) {
-            alert(e)
-        }
-        return true
+        return true;
     }
-    return false
+    return false;
 }

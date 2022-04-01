@@ -17,6 +17,7 @@ afterEach(() => {
   container = null;
 });
 
+// Dummy test to check if app is started correctly
 test('renders HomePage without crashing', () => {
   act(() => {
     render(
