@@ -6,15 +6,15 @@ import {FormControl, InputLabel, MenuItem, Select} from "@mui/material";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import {SendUserData} from "./CheckoutService";
-import { useNavigate } from "react-router-dom";
+import OrderProcessedAlert from "./OrderProcessedAlert";
 
 
 
 export default function InformationForm(props) {
     const [userData, setUserData] = React.useState({firstName: '', lastName: '', email: '', gender: ''});
-    const [orderProcessed, setOrderProcessed] = React.useState(false)
+    const [orderProcessed, setOrderProcessed] = React.useState(false);
+    const [openProcessFeedback, setOpenProcessFeedback] = React.useState(false)
     const options = ['Male', 'Female', 'Other', 'Prefer not to say'];
-    const navigate = useNavigate();
 
 
     async function handleSubmit() {
@@ -26,13 +26,17 @@ export default function InformationForm(props) {
                 userData.gender,
                 props.package.packageNumber).then(r => {
                 //TODO
-                navigate('/');
             }))
-
+        setOpenProcessFeedback(true);
     }
 
     return (
         <React.Fragment>
+            {openProcessFeedback ?
+                <OrderProcessedAlert processResult={orderProcessed}/>
+                : <></>
+            }
+
             <Typography variant="h6" gutterBottom sx={{ py: 3}}>
                 Your information
             </Typography>

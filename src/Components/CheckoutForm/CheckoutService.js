@@ -23,16 +23,16 @@ export async function SendUserData(
 
     const validUserData = validateData(firstName, lastName, email, gender, packageNumber);
     if(validUserData) {
-        try {
             axios.post("http://wwww.example.com", {
                 firstName, lastName, email, gender, packageNumber
             }).then(result => {
-                // TODO
+                console.log(result)
+
+            }).catch(error => {
+                console.log(error)
+                return false;
             })
-        }catch (e) {
-            alert(e)
-        }
-        return true
+        return true;
     }
-    return false
+    return false;
 }
