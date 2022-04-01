@@ -24,7 +24,7 @@ export function PackageCards(props) {
     }
 
     return (
-        <Card>
+        <Card id={props.item.packageNumber}>
             <CardHeader
                 className={classes.title}
                 title={props.item.title}
@@ -72,7 +72,7 @@ export function PackageCards(props) {
                 </ul>
             </CardContent>
             <CardActions>
-                <Button fullWidth variant={props.item.buttonVariant} onClick={SelectPackage}>
+                <Button fullWidth aria-label={props.item.title} variant={props.item.buttonVariant} onClick={SelectPackage}>
                     {props.item.buttonText}
                 </Button>
             </CardActions>

@@ -10,7 +10,6 @@ import OrderProcessedAlert from "./OrderProcessedAlert";
 import InformationFormAlert from "./InformationFormAlert";
 
 
-
 export default function InformationForm(props) {
     const [userData, setUserData] = React.useState({age: 0, email: '', gender: ''});
     const [orderProcessed, setOrderProcessed] = React.useState(false);
@@ -20,6 +19,7 @@ export default function InformationForm(props) {
     const [openProcessFeedback, setOpenProcessFeedback] = React.useState(false)
     const genderOptions = ['Male', 'Female', 'Other', 'Prefer not to say'];
 
+    // Helper function for handleSubmit, verifies if all fields are valid.
     function formIsValid() {
         if(!validInput.age){
             setErrorMessage("Age must be greater than 0!")
@@ -32,6 +32,8 @@ export default function InformationForm(props) {
         return true
     }
 
+
+    // Helper function for handleSubmit, verifies if all fields are defined.
     function formIsComplete() {
         if (userData.age === 0) {
             setErrorMessage("Please fill all the fields!");
@@ -48,27 +50,34 @@ export default function InformationForm(props) {
         return formIsValid();
     }
 
+
+    // Handler for the submit button
     async function handleSubmit() {
-        if(formIsComplete()){
-            setOrderProcessed(
-                await SendUserData(
+        if(formIsComplete()){  //Verify data before sending
+            setOrderProcessed( // checks if error processing data service
+                await SendUserData( //Send data to service
                     userData.age,
                     userData.email,
                     userData.gender,
                     props.package.packageNumber).then(r => {
-                    //TODO
+                    //TODO :
                 }))
-            setOpenProcessFeedback(true);
+            if(openFormInputError)
+                setOpenFormInputError(false) // Close Error Message
+            setOpenProcessFeedback(true); //Enable feedback from data service
         }
         else{
-            setOpenFormInputError(true);
-            setTimeout(() => {  setOpenFormInputError(false)}, 3000);
+            if(openFormInputError)
+                setOpenFormInputError(false)
+            setOpenFormInputError(true);  //Enable feedback from input errors
+            setTimeout(() => {  setOpenFormInputError(false)}, 3000); //Keep the error message open for 3 sec.
         }
 
 
     }
 
 
+    // Helper function for handleEmailChange
     function ValidateEmail(e) {
         const regex = /^(([^<>()[\]\.,;:\s@\"]+(\.[^<>()[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
         if(regex.test(e)){
@@ -77,11 +86,14 @@ export default function InformationForm(props) {
         setErrorMessage("Please enter a valid email address!");
     }
 
+    // Handler for the email input change
     function handleEmailChange(e) {
         setUserData({...userData, email: e.target.value})
         ValidateEmail(e.target.value);
     }
 
+
+    //Helper function for handleAgeChange
     function ValidateAge(age) {
         if(age > 0){
             setValidInput({...validInput, age: true})
@@ -89,6 +101,7 @@ export default function InformationForm(props) {
         setErrorMessage("Age must be greater than 0!");
     }
 
+    // Handler for the age input change
     function handleAgeChange(e) {
         ValidateAge(e.target.value)
         setUserData({...userData, age: e.target.value})
@@ -129,9 +142,12 @@ export default function InformationForm(props) {
                 </Grid>
                 <Grid item xs={12} sm={6}>
                     <TextField
-                        id="standard-number"
+                        id="age-number"
+                        data-testid="input-age"
                         label="Age"
+                        aria-label="age"
                         type="number"
+                        inputProps={{ "data-testid": "content-input" }}
                         onChange={handleAgeChange}
                         InputLabelProps={{
                             shrink: true,
