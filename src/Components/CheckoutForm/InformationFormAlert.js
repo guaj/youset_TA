@@ -15,6 +15,7 @@ export default function InformationFormAlert(props) {
         <Box sx={{ width: '100%' }}>
             <Collapse in={open}>
                 <Alert
+                    aria-label="form-error-alert"
                     severity="error"
                     action={
                         <IconButton

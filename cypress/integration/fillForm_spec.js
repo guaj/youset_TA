@@ -17,4 +17,15 @@ describe('Information form', () => {
         // click on submit
 
     })
+
+    it('alert the user when there is invalid data input in the form', () => {
+        cy.visit('http://localhost:3000/');
+        cy.findByRole('button', { name: /umbrella insurance/i }).click();
+        cy.findByRole('button', { name: /​/i }).click();
+        cy.findByRole('option', {  name: /female/i}).click();
+        cy.findByRole('spinbutton', { name: /age/i }).type('6');
+        cy.findByRole('textbox', {  name: /email/i}).type('test'); // enter bad input
+        cy.findByRole('button', {  name: /submit/i}).click();
+        cy.findByRole('alert', {  name: /form-error-alert/i});
+    })
 })

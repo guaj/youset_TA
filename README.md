@@ -14,6 +14,9 @@ Every commit / merge to main will automatically deploy a new build on the link a
 ## Available Scripts
 
 In this project directory, you can run:
+### `npm install`
+
+Installs all dependencies.
 
 ### `npm start`
 
@@ -23,6 +26,17 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.
+
+
+# Integration tests
+
+Integration tests are run by the cypress framework.\
+\
+To see test results, use the following command :
+
+### `npx cypress open`
+
+This will open a new window. Click on the integration test you wish to run to see the result.
 
 
 
