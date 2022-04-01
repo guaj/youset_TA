@@ -2,7 +2,7 @@ import './App.css';
 import {Route, Routes} from 'react-router-dom';
 import HomePage from "./Components/PackageSelection/PackageSelection";
 import {CheckOut} from "./Components/CheckoutForm/CheckOut";
-import OrderReview from "./Components/CheckoutForm/OrderProcessed";
+import OrderReview from "./Components/CheckoutForm/OrderProcessedAlert";
 
 function App() {
     return (
