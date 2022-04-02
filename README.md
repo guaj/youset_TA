@@ -9,7 +9,8 @@ The app is deployed on the following link:
 [https://main.d1saawafwy5sm5.amplifyapp.com/](https://main.d1saawafwy5sm5.amplifyapp.com/)
 
 A CI/CD pipeline was configured using TravisCI and AWS Amplify.\
-Every commit / merge to main will automatically deploy a new build on the link above.
+
+Every successful commit / merge to main will automatically deploy a new build on the link above. 
 
 ## Available Scripts
 
