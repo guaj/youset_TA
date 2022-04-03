@@ -58,7 +58,6 @@ export function CheckOut(props) {
     // Helper function for handleSubmit, verifies if all fields are valid.
     function formIsValid() {
         if(!validInput.age){
-            setErrorMessage("Age must be greater than 0!")
             return false
         }
         else if(!validInput.email){
@@ -136,11 +135,16 @@ export function CheckOut(props) {
     function ValidateAge(age) {
         if(age > 0){
             setValidInput({...validInput, age: true})
+            if(userData.age % 1 !== 0){
+                setErrorMessage("Age must not contain any digits.")
+                setValidInput({...validInput, age: false})
+            }
         }
         else{
             setValidInput({...validInput, age: false})
             setErrorMessage("Age must be greater than 0!");
         }
+
 
     }
 
