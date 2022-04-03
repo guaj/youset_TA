@@ -11,10 +11,9 @@ describe('Information form', () => {
         cy.findByRole('option', {  name: /female/i}).click(); // Click on a gender options
         cy.findByRole('spinbutton', { name: /age/i }).type('6');
         cy.findByRole('textbox', {  name: /email/i}).type('test@gmail.com');
-        cy.findByRole('button', {  name: /submit/i}).click();
-        // click on a package
-        // fill the form
-        // click on submit
+        cy.findByRole('button', {  name: /next/i}).click();
+        cy.findByRole('button', { name: /place order/i }).click();
+        cy.findByRole('button', { name: /close/i });
 
     })
 
@@ -25,7 +24,7 @@ describe('Information form', () => {
         cy.findByRole('option', {  name: /female/i}).click();
         cy.findByRole('spinbutton', { name: /age/i }).type('6');
         cy.findByRole('textbox', {  name: /email/i}).type('test'); // enter bad input
-        cy.findByRole('button', {  name: /submit/i}).click();
+        cy.findByRole('button', {  name: /next/i}).click();
         cy.findByRole('alert', {  name: /form-error-alert/i});
     })
 
@@ -34,9 +33,9 @@ describe('Information form', () => {
         cy.findByRole('button', { name: /umbrella insurance/i }).click();
         cy.findByRole('button', { name: /​/i }).click();
         cy.findByRole('option', {  name: /female/i}).click();
-        cy.findByRole('spinbutton', { name: /age/i }).type('-1');
-        cy.findByRole('textbox', {  name: /email/i}).type('test@gmail.com'); // enter bad input
-        cy.findByRole('button', {  name: /submit/i}).click();
+        cy.findByRole('spinbutton', { name: /age/i }).type('-1'); // enter bad input
+        cy.findByRole('textbox', {  name: /email/i}).type('test@gmail.com');
+        cy.findByRole('button', {  name: /next/i}).click();
         cy.findByRole('alert', {  name: /form-error-alert/i});
     })
 
@@ -46,7 +45,7 @@ describe('Information form', () => {
         cy.findByRole('button', { name: /​/i }).click();
         cy.findByRole('option', {  name: /female/i}).click();
         cy.findByRole('textbox', {  name: /email/i}).type('test@gmail.com'); // enter bad input
-        cy.findByRole('button', {  name: /submit/i}).click();
+        cy.findByRole('button', {  name: /next/i}).click();
         cy.findByRole('alert', {  name: /form-error-alert/i});
     })
 })

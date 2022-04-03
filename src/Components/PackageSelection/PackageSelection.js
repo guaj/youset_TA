@@ -89,13 +89,13 @@ function PackageSelection(props) {
 
             {/* Package Selection */}
             <Container maxWidth="md" component="main">
-                <Grid container spacing={5} alignItems="flex-end">
+                <Grid container spacing={6} alignItems="flex-end">
                     {props.packages.map((item) => (
                         <Grid
                             item
                             key={item.title}
                             xs={12}
-                            sm={item.title === 'Enterprise' ? 12 : 6}
+                            sm={item.title === 'Umbrella Insurance' ? 12 : 6}
                             md={4}
                         >
                             {/* Cards containing packages */}
@@ -109,7 +109,7 @@ function PackageSelection(props) {
 
             {/* Footer */}
             <Container
-                maxWidth="md"
+                maxWidth="lg"
                 sx={{
                     borderTop: (theme) => `1px solid ${theme.palette.divider}`,
                     mt: 8,

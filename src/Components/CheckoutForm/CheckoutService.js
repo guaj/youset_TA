@@ -18,6 +18,7 @@ export async function SendUserData(
     gender,
     packageNumber) {
 
+    // console.log("Age: "+age+"\nEmail: "+email+"\nGender: "+gender+"\nPackageNumber: "+packageNumber); // for debug;
     const validUserData = validateData(age, email, gender, packageNumber);
     if(validUserData) {
             axios.post("http://wwww.example.com", {
